@@ -19,9 +19,10 @@ class MainActivity : AppCompatActivity() {
          val inputField = findViewById<EditText>(R.id.etName)
          val submitButton = findViewById<Button>(R.id.btnSubmit)
          val offersButton = findViewById<Button>(R.id.btnOffers)
+         var enteredName = ""
           // onClick Listener
          submitButton.setOnClickListener {
-             val enteredName = inputField.text.toString()
+              enteredName = inputField.text.toString()
 
              if(enteredName == ""){
                   // Hide Button if user didn't enter there name
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
            offersButton.setOnClickListener {
                // Create Intent Object  (Intent is a class in android libraries)
                val intent = Intent(this, SecondActivity::class.java)
+               intent.putExtra("USER", enteredName)
                startActivity(intent)
            }
     }
